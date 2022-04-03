@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="myApp">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo_list</title>
+    <!-- css 초기화 -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="index2.js"></script>
+    <link defer rel="stylesheet" href="index2.css">
+</head>
+
+<body>
+    <div class="title">
+        <h1>Todo_list</h1>
+    </div>
+    <div ng-controller="myBoard" class="inputText">
+        <form ng-submit="addBoard()" class="inputText">
+            todo : <input type="text" ng-model="boardListForm.todo" autofocus /><br />
+            <br />
+            &nbsp;&nbsp;<button type="submit">추 가</button>
+        </form>
+        <br />
+        <br /> <br />
+        <br />
+
+        <br />
+        <br />
+        <table border="1" class="todo">
+            <tr>
+                <td style="width: 50px;">No</td>
+                <td style="width: 200px;">todo</td>
+                <td style="width: 30px;">Check</td>
+                
+            </tr>
+            <tr ng-repeat="item in boardList">
+                <td style="width: 50px;">{{$index + 1}}</td>
+                <td style="width: 200px;">
+                    <span class="completed-{{todo.completed}}">{{item.todo}}
+                    </span>
+                </td>
+                <td>
+                    <input type="checkbox" ng-model="todo.completed" />{{}}
+                </td>
+                
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>

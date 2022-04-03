@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        let app = angular.module("myApp", []);
+
+        app.controller("myController", function ($scope) {
+            $scope.hello = "Hello AngularJS";
+        });
+        app.controller("myBoard", function ($scope) {
+            $scope.boardList = [{
+                    no: 1,
+                    title: 'Title1',
+                    writer: 'user1'
+                },
+                {
+                    no: 2,
+                    title: 'Title2',
+                    writer: 'user2'
+                },
+                {
+                    no: 3,
+                    title: 'Title3',
+                    writer: 'user3'
+                },
+            ];
+
+            $scope.remove = function (no) {
+                if (!no) return;
+                let num = -1;
+                for (let i = 0; i < $scope.boardList.length; i++) {
+                    if ($scope.boardList[i].no === no) {
+                        num = i;
+                        break;
+                    }
+                }
+                if (num === -1) return;
+                $scope.boardList.splice(num, 1)
+            }
+
+            $scope.boardListForm = {};
+
+            $scope.addBoard = function () {
+                let newNo = !$scope.boardList.length ? 1 : $scope.boardList[$scope.boardList.length - 1].no
+                let newItem = {
+                    no: newNo,
+                    title: $scope.boardListForm.title,
+                    writer: $scope.boardListForm.writer
+                };
+
+                $scope.boardList.push(newItem);
+                $scope.boardListForm.title = "";
+                $scope.boardListForm.writer = "";
+            }
+
+
+
+            $scope.update = function (no) {
+                if (!no) return;
+                let num = -1;
+                for (let i = 0; i < $scope.boardList.length; i++) {
+                    if ($scope.boardList[i].no === no) {
+                        num = i;
+                        break;
+                    }
+                }
+                if (num === -1) return;
+
+                $scope.boardList[num].no = no;
+                $scope.boardList[num].title = $scope.boardListForm.title;
+                $scope.boardList[num].writer = $scope.boardListForm.writer;
+
+                $scope.boardListForm.title = "";
+                $scope.boardListForm.writer = "";
+            }
+
+        });
+    </script>
+</head>
+
+<body>
+    <div ng-controller="myBoard">
+        <form ng-submit="addBoard()">
+            Title : <input type="text" ng-model="boardListForm.title" autofocus /><br />
+            User : <input type="text" ng-model="boardListForm.writer" autofocus /><br />
+            <br />
+            &nbsp;&nbsp;<button type="submit">추 가</button>
+        </form>
+        <br />
+        <br /> <br />
+        <br />
+
+        <br />
+        <br />
+        <table border="1">
+            <tr>
+                <td style="width: 50px;">No</td>
+                <td style="width: 200px;">Title</td>
+                <td style="width: 50px;">Name</td>
+                <td style="width: 50px;">Remove</td>
+                <td style="width: 50px;">Update</td>
+
+            </tr>
+            <tr ng-repeat="item in boardList">
+                <td style="width: 50px;">{{$index + 1}}</td>
+                <td style="width: 200px;">{{item.title}}</td>
+                <td style="width: 50px;">{{item.writer}}</td>
+                <td style="width: 50px;"><button type="button" ng-click="remove(item.no)">삭제</button></td>
+                <td style="width: 50px;"><button type="button" ng-click="update(item.no)">수정</button></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div ng-controller="myController">
+        <h1>{{ hello }}</h1>
+    </div>
+</body>
+
+</html>
