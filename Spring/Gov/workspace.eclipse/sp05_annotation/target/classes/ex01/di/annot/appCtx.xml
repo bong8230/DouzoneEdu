@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="cat1" class="ex01.di.annot.MyCats">
+		<constructor-arg>
+			<value>고양이</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>1</value>
+		</constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>하나</value>
+				<value>둘</value>
+				<value>셋</value>
+			</list>
+		</constructor-arg>
+		<property name="weight" value="3.3"/>
+		<property name="color"><value>gray</value></property> 
+	</bean>
+
+	<bean id="cat2" class="ex01.di.annot.MyCats">
+	<constructor-arg  value="쿠기"/>
+	<constructor-arg value="17"/>
+	<constructor-arg>
+		<list>
+		<value>뒹굴</value>
+		<value>구석</value>
+		</list>
+	</constructor-arg>
+	<property name="weight" value="2.0"/>
+	<property name="color" value="white"/>
+	</bean>
+	
+	<bean id="cats" class="ex01.di.annot.Cats">
+		<constructor-arg ref="cat1"/>
+	</bean>
+</beans>

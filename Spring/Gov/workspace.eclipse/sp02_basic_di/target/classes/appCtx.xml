@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="ex04.di.NewRecordImpl" id="record">
+		<!-- 생성자를 통해서 값(value) 주입 -->
+		<!-- <constructor-arg><value>100</value></constructor-arg> <constructor-arg 
+			value="99"/> <constructor-arg value="88"></constructor-arg> -->
+		<!-- <constructor-arg name="eng" value="100" /> <constructor-arg name="kor" 
+			value="77" /> <constructor-arg name="com" value="99" /> -->
+		<constructor-arg index="0" value="1" />
+		<constructor-arg index="1" value="10" />
+		<constructor-arg index="2" value="20" />
+	</bean>
+	<bean id="newRecordViewImpl" class="ex04.di.NewRecordViewImpl"
+		name="view, x, kbs, abc, a">
+		<property name="record" ref="record" />
+	</bean>
+</beans>
+
