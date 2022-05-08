@@ -9,7 +9,8 @@ public class MainEntry {
 		String config = "classpath:ex03/di/qualifier/appCtx.xml";
 		ApplicationContext ctx = new GenericXmlApplicationContext(config);
 		
-		MonitorViewer viewer = ctx.getBean("monitorViewer",MonitorViewer.class);
+		MonitorViewer viewer = 
+				ctx.getBean("monitorViewer",MonitorViewer.class);
 		
 	}
 }

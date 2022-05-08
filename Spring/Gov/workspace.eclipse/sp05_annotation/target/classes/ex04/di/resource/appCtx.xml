@@ -4,14 +4,12 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
 	<context:annotation-config/>
-	<bean id="monitorViewer" class ="ex03.di.qualifier.MonitorViewer"/>
 	
-	<bean id="record1" class = "ex03.di.qualifier.Recorder">
-		<qualifier value="key"/>
-	</bean>
-	<bean id="record2" class = "ex03.di.qualifier.Recorder">
-		<qualifier value="cord"/>
-	</bean>
-	
+	<bean id="monitorViewer" class="ex04.di.resource.MonitorViewer"/>
+	<bean id="record1" class="ex04.di.resource.Recorder"/>
+	<bean id="record2" class="ex04.di.resource.Recorder"/>
+	<bean id="record3" class="ex04.di.resource.Recorder"/>
+
 </beans>

@@ -10,6 +10,7 @@
 		<config>src/ex01/di/annot/appCtx.xml</config>
 		<config>src/ex02/di/autowired/applicationContext.xml</config>
 		<config>src/ex03/di/qualifier/appCtx.xml</config>
+		<config>src/ex04/di/resource/appCtx.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

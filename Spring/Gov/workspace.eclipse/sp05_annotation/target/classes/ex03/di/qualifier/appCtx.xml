@@ -6,5 +6,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	<context:annotation-config/>
 	<bean id="monitorViewer" class ="ex03.di.qualifier.MonitorViewer"/>
-	<bean class = "ex03.di.qualifier.Recorder"/>
+	
+	<bean id="record1" class = "ex03.di.qualifier.Recorder">
+		<qualifier value="key"/>
+	</bean>
+	<bean id="record2" class = "ex03.di.qualifier.Recorder">
+		<qualifier value="cord"/>
+	</bean>
+	
 </beans>
