@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<bean name="/insertForm" class="edu.quiz.controller.InsertFormController"/>
+	<bean class="edu.quiz.controller.InsertController">
+		<property name="deptDAO" ref="dao"/>
+	</bean>
+	
+	<bean name ="/list" class="edu.quiz.controller.ListController" p:deptDAO-ref="dao"/>
+	
+	<!-- ViewResolver 빈 객체 생성  -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+</beans>
