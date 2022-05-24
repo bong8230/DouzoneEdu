@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardDAO">
+	<insert id="insertBoard">
+		insert into
+		mybatis_board(seq, title, writer, content, regdate, cnt)
+		values(board_seq.nextval, #{title}, #{writer}, #{content}, sysdate, 0)
+	</insert>
+	<select id="getBoard" resultType="board">
+		select * from mybatis_board where seq=#{seq}
+	</select>
+	<update id="updateBoard">
+		update mybatis_board set title=#{title}, content=#{content} where seq=#{seq}
+	</update>
+	
+	<delete id="deleteBoard">
+		delete mybatis_board where seq=#{seq}
+	</delete>
+	<!-- 컬럼값은 $, 변수값은 # // #은 자동으로 ''을 붙임 => 변수값에 이용// -->
+	<select id="getBoardList" resultType="board">
+		select * from mybatis_board 
+		where ${searchCondition} like '%'||#{searchKeyword}||'%'
+		order by seq asc
+	</select>
+</mapper>

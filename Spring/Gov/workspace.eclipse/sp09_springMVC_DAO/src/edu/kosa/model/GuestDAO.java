@@ -7,5 +7,4 @@ public interface GuestDAO {
 	public List listGuest(); //select
 	public void insertGuest(GuestDTO dto);//insert
 	
-	
 }

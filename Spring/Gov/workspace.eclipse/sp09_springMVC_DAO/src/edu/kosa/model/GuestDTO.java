@@ -1,5 +1,13 @@
 package edu.kosa.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+
+@Getter
 public class GuestDTO {
 	private int num;
 	private String name, email, home, contents;
